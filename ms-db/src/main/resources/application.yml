@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ms-db
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  datasource:
+    url: ${DBCP_MSDB_URL}
+    username: ${DBCP_MSDB_USER}
+    password: ${DBCP_MSDB_PASS}
+    driver-class-name: ${DBCP_MSDB_DRIVER}
+
+server:
+  port: 8081
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+
