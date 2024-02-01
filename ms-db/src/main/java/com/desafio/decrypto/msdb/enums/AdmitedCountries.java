@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Enum of AdmitedCountries
+ */
 public enum AdmitedCountries {
     ARGENTINA("Argentina"),
     URUGUAY("Uruguay");
@@ -21,19 +24,23 @@ public enum AdmitedCountries {
 
     /**
      * @param description description
-     * @return
+     * @return AdmitedCountries
      */
     public static AdmitedCountries getByDescription(final String description) {
         return mapper.get(description);
     }
 
     /**
-     * @return
+     * @return description
      */
     public String getDescription() {
         return this.description;
     }
 
+    /**
+     * @param name name
+     * @return AdmitedCountries
+     */
     public static AdmitedCountries resolveByName(final String name) {
         return Arrays.stream(values()).filter(e -> e.name().equals(name)).findFirst().orElse(null);
     }

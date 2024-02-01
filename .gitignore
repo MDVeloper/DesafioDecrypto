@@ -58,6 +58,7 @@ target/
 !**/src/test/**/target/
 mvnw
 mvnw.cmd
+checkstyle.cache
 
 # folders
 .mvn/

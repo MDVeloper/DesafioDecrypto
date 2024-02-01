@@ -15,11 +15,23 @@ public interface ComitentesService {
      * Retrieve stats of comitentes
      * @return StatsOfComitentesRsDTO {@link StatsOfComitentesRsDTO}
      */
-    List<StatsOfComitentesRsDTO> getStats();
+    public List<StatsOfComitentesRsDTO> getStats();
 
     /**
      * Retrieve stats of comitentes
      * @return Map<String, List<MarketRsDTO>> {@link Map<>}
      */
-    Map<String, List<MarketRsDTO>> getStats1();
+    public Map<String, List<MarketRsDTO>> getStats1();
+
+    /**
+     * Create random mercados
+     * @param count count
+     */
+    public void createRandomMercados(int count);
+
+    /**
+     * Create random comitentes
+     * @param count count
+     */
+    public void createRandomComitentes(int count);
 }

@@ -10,11 +10,11 @@
 	</parent>
 	<groupId>com.desafio.decrypto</groupId>
 	<artifactId>ms-db</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>ms-db</name>
 	<description>Ms construido para el desafio de Decrypto</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>19</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -40,11 +40,18 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.24</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.3.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -65,7 +72,79 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.0.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>8.20</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>validateCheckStyle</id>
+						<phase>validate</phase>
+						<configuration>
+							<sourceDirectories>
+								<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+								<sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
+							</sourceDirectories>
+							<configLocation>checkstyle.xml</configLocation>
+							<suppressionsLocation>suppressions.xml</suppressionsLocation>
+							<cacheFile>checkstyle.cache</cacheFile>
+							<encoding>UTF-8</encoding>
+							<consoleOutput>true</consoleOutput>
+							<violationSeverity>warning</violationSeverity>
+							<failOnViolation>true</failOnViolation>
+						</configuration>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.11</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>PACKAGE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>

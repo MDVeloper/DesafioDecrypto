@@ -2,7 +2,17 @@ package com.desafio.decrypto.msdb.entity;
 
 import com.desafio.decrypto.msdb.enums.AdmitedCountries;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -53,42 +63,42 @@ public class Mercado {
      * @return id
      */
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     /**
      * @return code
      */
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     /**
      * @return description
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
      * @return country
      */
     public AdmitedCountries getCountry() {
-        return country;
+        return this.country;
     }
 
     /**
      * @return createDate
      */
     public Date getCreateDate() {
-        return createDate;
+        return this.createDate;
     }
 
     /**
      * @return modifyDate
      */
     public Date getModifyDate() {
-        return modifyDate;
+        return this.modifyDate;
     }
 
     /**
@@ -96,6 +106,6 @@ public class Mercado {
      */
     @JsonManagedReference
     public List<Comitente> getComitenteList() {
-        return comitenteList;
+        return this.comitenteList;
     }
 }

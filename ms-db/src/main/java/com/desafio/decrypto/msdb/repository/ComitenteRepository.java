@@ -4,6 +4,9 @@ import com.desafio.decrypto.msdb.entity.Comitente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository for Comitente
+ */
 @Repository
 public interface ComitenteRepository extends JpaRepository<Comitente, Long> {
 }

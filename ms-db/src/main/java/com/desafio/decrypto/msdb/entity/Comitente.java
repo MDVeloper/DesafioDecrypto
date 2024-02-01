@@ -1,7 +1,18 @@
 package com.desafio.decrypto.msdb.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -24,7 +35,7 @@ public class Comitente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column (name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION")
     private String description;
 
     @CreationTimestamp
@@ -49,28 +60,28 @@ public class Comitente {
      * @return id
      */
     public long getId() {
-        return id;
+        return this.id;
     }
 
     /**
      * @return description
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
      * @return createDate
      */
     public Date getCreateDate() {
-        return createDate;
+        return this.createDate;
     }
 
     /**
      * @return modifyDate
      */
     public Date getModifyDate() {
-        return modifyDate;
+        return this.modifyDate;
     }
 
     /**
@@ -78,6 +89,6 @@ public class Comitente {
      */
     @JsonBackReference
     public List<Mercado> getMarketList() {
-        return marketList;
+        return this.marketList;
     }
 }
