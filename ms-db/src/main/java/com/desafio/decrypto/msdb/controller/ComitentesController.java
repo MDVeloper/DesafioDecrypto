@@ -47,21 +47,21 @@ public class ComitentesController {
      * @return statsOfComitentesRsDTO {@link StatsOfComitentesRsDTO}
      */
     @GetMapping(path = "/stats", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get stats of comitentes", responses = {
             @ApiResponse(description = "Get stats of comitentes", responseCode = "200", content = @Content(mediaType = "application/json"))})
+    @ResponseStatus(HttpStatus.OK)
     public List<StatsOfComitentesRsDTO> getStats() {
         return this.comitentesService.getStats();
     }
 
     /**
      * Endpoint for get stats of comitentes
-     * @return statsOfComitentesRsDTO {@link StatsOfComitentesRsDTO}
+     * @return Map<String, List<MarketRsDTO>> {@link Map<>}
      */
     @GetMapping(path = "/stats1", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Get stats of comitentes", responses = {
+     @Operation(summary = "Get stats of comitentes", responses = {
             @ApiResponse(description = "Get stats of comitentes", responseCode = "200", content = @Content(mediaType = "application/json"))})
+    @ResponseStatus(HttpStatus.OK)
     public Map<String, List<MarketRsDTO>> getStats1() {
         return this.comitentesService.getStats1();
     }

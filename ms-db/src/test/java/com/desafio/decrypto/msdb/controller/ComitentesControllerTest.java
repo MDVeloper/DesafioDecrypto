@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Test the Comitentes Controller.
@@ -38,11 +40,10 @@ public class ComitentesControllerTest {
 
     /**
      * Init.
-     * @throws Exception
      */
     @Before
-    public void setup() throws Exception {
-        mockMvc = MockMvcBuilders.standaloneSetup(comitentesController).build();
+    public void setup() {
+        this.mockMvc = MockMvcBuilders.standaloneSetup(this.comitentesController).build();
     }
 
     /**
@@ -50,9 +51,9 @@ public class ComitentesControllerTest {
      */
     @Test
     public void whenGetStatsThenReturnListOfStatsOfComitentesRsDTO() {
-        List<StatsOfComitentesRsDTO> expected = new ArrayList<>();
+        final List<StatsOfComitentesRsDTO> expected = new ArrayList<>();
         when(this.comitentesService.getStats()).thenReturn(expected);
-        List<StatsOfComitentesRsDTO> response = this.comitentesController.getStats();
+        final List<StatsOfComitentesRsDTO> response = this.comitentesController.getStats();
 
         assertEquals(expected, response);
     }
@@ -62,9 +63,9 @@ public class ComitentesControllerTest {
      */
     @Test
     public void whenGetStats1ThenReturnListOfStatsOfComitentesRsDTO() {
-        Map<String, List<MarketRsDTO>> expected = new HashMap<>();
+        final Map<String, List<MarketRsDTO>> expected = new HashMap<>();
         when(this.comitentesService.getStats1()).thenReturn(expected);
-        Map<String, List<MarketRsDTO>> response = this.comitentesController.getStats1();
+        final Map<String, List<MarketRsDTO>> response = this.comitentesController.getStats1();
 
         assertEquals(expected, response);
     }
@@ -74,11 +75,11 @@ public class ComitentesControllerTest {
      */
     @Test
     public void whenCreateRandomMercadosThenReturnVoid() {
-        doNothing().when(this.comitentesService).createRandomMercados(REQUEST_INTEGER);
+        doNothing().when(this.comitentesService).createRandomMercados(this.REQUEST_INTEGER);
 
-        this.comitentesController.createRandomMercados(REQUEST_INTEGER);
+        this.comitentesController.createRandomMercados(this.REQUEST_INTEGER);
 
-        verify(this.comitentesService).createRandomMercados(REQUEST_INTEGER);
+        verify(this.comitentesService).createRandomMercados(this.REQUEST_INTEGER);
     }
 
     /**
@@ -86,10 +87,10 @@ public class ComitentesControllerTest {
      */
     @Test
     public void whenCreateRandomComitentesThenReturnVoid() {
-        doNothing().when(this.comitentesService).createRandomComitentes(REQUEST_INTEGER);
+        doNothing().when(this.comitentesService).createRandomComitentes(this.REQUEST_INTEGER);
 
-        this.comitentesController.createRandomComitentes(REQUEST_INTEGER);
+        this.comitentesController.createRandomComitentes(this.REQUEST_INTEGER);
 
-        verify(this.comitentesService).createRandomComitentes(REQUEST_INTEGER);
+        verify(this.comitentesService).createRandomComitentes(this.REQUEST_INTEGER);
     }
 }
