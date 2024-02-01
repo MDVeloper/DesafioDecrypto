@@ -2,17 +2,7 @@ package com.desafio.decrypto.msdb.entity;
 
 import com.desafio.decrypto.msdb.enums.AdmitedCountries;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -56,7 +46,7 @@ public class Mercado {
     @Column(name = "MODIFY_DATE")
     private Date modifyDate;
 
-    @ManyToMany(mappedBy = "marketList")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "marketList", cascade = CascadeType.ALL)
     private List<Comitente> comitenteList;
 
     /**

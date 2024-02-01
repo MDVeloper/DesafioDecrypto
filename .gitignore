@@ -11,7 +11,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -59,6 +58,7 @@ target/
 mvnw
 mvnw.cmd
 checkstyle.cache
+ms-db/src/main/resources/application-test.properties
 
 # folders
 .mvn/

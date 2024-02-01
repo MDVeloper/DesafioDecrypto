@@ -47,15 +47,15 @@ public class ComitentesServiceImpl implements ComitentesService {
         LOGGER.info("Using Method 1, diferent formato, pero menores iteraciones/rsTime");
 
         long startingPoint = System.currentTimeMillis();
-        final List<Comitente> comitenteList = this.comitenteRepository.findAll().stream().toList();
-        LOGGER.info("Comitentes found: {} in {} seconds", comitenteList.size(), (double) (System.currentTimeMillis() - startingPoint) / 1000);
+        final long comitentesCount = this.comitenteRepository.count();
+        LOGGER.info("Comitentes found: {} in {} seconds", comitentesCount, (double) (System.currentTimeMillis() - startingPoint) / 1000);
 
         startingPoint = System.currentTimeMillis();
         final List<Mercado> mercadoList = this.mercadoRepository.findAll().stream().toList();
-        LOGGER.info("Mercados found: {} in {} seconds", comitenteList.size(), (double) (System.currentTimeMillis() - startingPoint) / 1000);
+        LOGGER.info("Mercados found: {} in {} seconds", mercadoList.size(), (double) (System.currentTimeMillis() - startingPoint) / 1000);
 
         startingPoint = System.currentTimeMillis();
-        final Map<String, List<MarketRsDTO>> result = mapByCountryAndMarkets(comitenteList, mercadoList);
+        final Map<String, List<MarketRsDTO>> result = mapByCountryAndMarkets(comitentesCount, mercadoList);
         LOGGER.info("Time consume in seconds to make the proccess: {}", (double) (System.currentTimeMillis() - startingPoint) / 1000);
         // return mapByCountryAndMarkets(comitenteList, mercadoList);
         return result;
@@ -66,15 +66,15 @@ public class ComitentesServiceImpl implements ComitentesService {
         LOGGER.info("Using Method 0, formato indicado, pero mas iteraciones/rsTime");
 
         long startingPoint = System.currentTimeMillis();
-        final List<Comitente> comitenteList = this.comitenteRepository.findAll().stream().toList();
-        LOGGER.info("Comitentes found: {} in {} seconds", comitenteList.size(), (double) (System.currentTimeMillis() - startingPoint) / 1000);
+        final long comitentesCount = this.comitenteRepository.count();
+        LOGGER.info("Comitentes size: {} in {} seconds", comitentesCount, (double) (System.currentTimeMillis() - startingPoint) / 1000);
 
         startingPoint = System.currentTimeMillis();
         final List<Mercado> mercadoList = this.mercadoRepository.findAll().stream().toList();
-        LOGGER.info("Mercados found: {} in {} seconds", comitenteList.size(), (double) (System.currentTimeMillis() - startingPoint) / 1000);
+        LOGGER.info("Mercados found: {} in {} seconds", mercadoList.size(), (double) (System.currentTimeMillis() - startingPoint) / 1000);
 
         startingPoint = System.currentTimeMillis();
-        final List<StatsOfComitentesRsDTO> statsOfComitentesRsDTOList = buildResponse(comitenteList, mercadoList);
+        final List<StatsOfComitentesRsDTO> statsOfComitentesRsDTOList = buildResponse(comitentesCount, mercadoList);
         LOGGER.info("Time consume in seconds to make the proccess: {}", (double) (System.currentTimeMillis() - startingPoint) / 1000);
         //return buildResponse(comitenteList, mercadoList);
         return statsOfComitentesRsDTOList;
@@ -105,13 +105,13 @@ public class ComitentesServiceImpl implements ComitentesService {
         return mercadoList.stream().filter(mercadoPredicate).toList();
     }
 
-    private List<StatsOfComitentesRsDTO> buildResponse(final List<Comitente> comitenteList, final List<Mercado> mercadoList) {
-        final Map<String, List<MarketRsDTO>> mappedResult = mapByCountryAndMarkets(comitenteList, mercadoList);
+    private List<StatsOfComitentesRsDTO> buildResponse(final long comitentesCount, final List<Mercado> mercadoList) {
+        final Map<String, List<MarketRsDTO>> mappedResult = mapByCountryAndMarkets(comitentesCount, mercadoList);
         return buildStatsOfComitentesRsDTOList(mappedResult);
     }
 
-    private Map<String, List<MarketRsDTO>> mapByCountryAndMarkets(final List<Comitente> comitenteList, final List<Mercado> mercadoList) {
-        final double percentagePerComitente = 100.0 / comitenteList.size();
+    private Map<String, List<MarketRsDTO>> mapByCountryAndMarkets(final long comitentesCount, final List<Mercado> mercadoList) {
+        final double percentagePerComitente = 100.0 / comitentesCount;
         final Map<String, List<MarketRsDTO>> responseMap = new HashMap<>();
 
         mercadoList.forEach(mercado -> {
