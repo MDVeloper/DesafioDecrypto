@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.desafio.decrypto</groupId>
 	<artifactId>ms-db</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>ms-db</name>
 	<description>Ms construido para el desafio de Decrypto</description>
 	<properties>

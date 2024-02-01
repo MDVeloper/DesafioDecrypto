@@ -12,6 +12,12 @@ import java.util.Map;
 public interface ComitentesService {
 
     /**
+     * Proccess test
+     * @return String {@link String}
+     */
+    public String getTest();
+
+    /**
      * Retrieve stats of comitentes
      * @return StatsOfComitentesRsDTO {@link StatsOfComitentesRsDTO}
      */

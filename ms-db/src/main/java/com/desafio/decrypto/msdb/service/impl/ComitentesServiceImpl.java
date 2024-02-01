@@ -43,6 +43,11 @@ public class ComitentesServiceImpl implements ComitentesService {
     }
 
     @Override
+    public String getTest() {
+        return "Test answer who just get a OK message";
+    }
+
+    @Override
     public Map<String, List<MarketRsDTO>> getStats1() {
         LOGGER.info("Using Method 1, diferent formato, pero menores iteraciones/rsTime");
 

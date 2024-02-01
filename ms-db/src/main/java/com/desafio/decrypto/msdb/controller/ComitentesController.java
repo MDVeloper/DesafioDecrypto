@@ -43,6 +43,18 @@ public class ComitentesController {
     }
 
     /**
+     * Test answer who just get a OK message
+     * @return String {@link String}
+     */
+    @GetMapping(path = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Test answer who just get a OK message", responses = {
+            @ApiResponse(description = "Test answer who just get a OK message", responseCode = "200", content = @Content(mediaType = "application/json"))})
+    @ResponseStatus(HttpStatus.OK)
+    public String getTest() {
+        return this.comitentesService.getTest();
+    }
+
+    /**
      * Endpoint for get stats of comitentes
      * @return statsOfComitentesRsDTO {@link StatsOfComitentesRsDTO}
      */
