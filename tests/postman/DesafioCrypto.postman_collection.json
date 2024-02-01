@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "ab46b945-6a22-4583-a85d-02342b5565d0",
+		"name": "DesafioCrypto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21559310"
+	},
+	"item": [
+		{
+			"name": "deployTest",
+			"item": [
+				{
+					"name": "prueba 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://desafiocrypto-mdveloper.onrender.com/comitentes/stats",
+							"protocol": "https",
+							"host": [
+								"desafiocrypto-mdveloper",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"comitentes",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "localTest",
+			"item": [
+				{
+					"name": "Test App /comitentes/stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/comitentes/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comitentes",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test App /comitentes/createMercados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/comitentes/createMercados?count=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comitentes",
+								"createMercados"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test App /comitentes/createComitentes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/comitentes/createComitentes?count=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comitentes",
+								"createComitentes"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test App /comitentes/test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/comitentes/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comitentes",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

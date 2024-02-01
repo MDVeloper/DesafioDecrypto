@@ -9,6 +9,7 @@ import com.desafio.decrypto.msdb.repository.ComitenteRepository;
 import com.desafio.decrypto.msdb.repository.MercadoRepository;
 import com.desafio.decrypto.msdb.service.ComitentesService;
 import com.desafio.decrypto.msdb.utils.OwnUtils;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +45,13 @@ public class ComitentesServiceImpl implements ComitentesService {
 
     @Override
     public String getTest() {
+        LOGGER.info("Test answer who just get a OK message");
         return "Test answer who just get a OK message";
     }
 
     @Override
+    // Not needed but this stats1 its done for testing purposes
+    @Transactional
     public Map<String, List<MarketRsDTO>> getStats1() {
         LOGGER.info("Using Method 1, diferent formato, pero menores iteraciones/rsTime");
 
